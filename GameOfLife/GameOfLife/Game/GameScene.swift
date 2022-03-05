@@ -9,20 +9,24 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var rows: Int!
+    var cols: Int!
+    
     private let padding: CGFloat = 2
     
     override func didMove(to view: SKView) {
-        configureScene()
+        super.didMove(to: view)
         
-        drawGrid()
+        configureScene()
+        drawGrid(rows: rows, cols: cols)
     }
     
     
     private func configureScene() {
-        backgroundColor = .darkGray
+        backgroundColor = SKColor.black
     }
     
-    private func drawGrid(rows: Int = 10, cols: Int = 10) {
+    private func drawGrid(rows: Int, cols: Int) {
         let minDimesnion = min(size.height, size.width)
         let cellWidth: CGFloat = minDimesnion / CGFloat(cols) - padding
         

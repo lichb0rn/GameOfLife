@@ -15,6 +15,8 @@
 		8912779327D23CF50016D4DB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912779227D23CF50016D4DB /* GameViewController.swift */; };
 		8912779627D23D1A0016D4DB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912779527D23D1A0016D4DB /* GameScene.swift */; };
 		8912779827D25C4C0016D4DB /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912779727D25C4C0016D4DB /* Grid.swift */; };
+		895FF4AE27D33A2700D14B1F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FF4AD27D33A2700D14B1F /* GameModel.swift */; };
+		899DD5AD27D388C6001397B1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899DD5AC27D388C6001397B1 /* StartScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		8912779227D23CF50016D4DB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8912779527D23D1A0016D4DB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8912779727D25C4C0016D4DB /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		895FF4AD27D33A2700D14B1F /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		899DD5AC27D388C6001397B1 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +80,11 @@
 		8912779427D23D0B0016D4DB /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				8912779227D23CF50016D4DB /* GameViewController.swift */,
+				895FF4AD27D33A2700D14B1F /* GameModel.swift */,
 				8912779527D23D1A0016D4DB /* GameScene.swift */,
+				8912779227D23CF50016D4DB /* GameViewController.swift */,
 				8912779727D25C4C0016D4DB /* Grid.swift */,
+				899DD5AC27D388C6001397B1 /* StartScene.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -157,8 +163,10 @@
 				8912777E27D22C300016D4DB /* AppDelegate.swift in Sources */,
 				8912779327D23CF50016D4DB /* GameViewController.swift in Sources */,
 				8912779627D23D1A0016D4DB /* GameScene.swift in Sources */,
+				899DD5AD27D388C6001397B1 /* StartScene.swift in Sources */,
 				8912779827D25C4C0016D4DB /* Grid.swift in Sources */,
 				8912778027D22C300016D4DB /* SceneDelegate.swift in Sources */,
+				895FF4AE27D33A2700D14B1F /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

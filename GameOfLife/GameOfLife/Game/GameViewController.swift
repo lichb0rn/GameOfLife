@@ -9,22 +9,22 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initScene()
+        startScene()
     }
     
-    private func initScene() {
-        let scene = GameScene(size: view.bounds.size)
+    private func startScene() {
+        let startScene = StartScene(size: view.bounds.size)
         
         let skView = view as! SKView
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
+        startScene.scaleMode = .resizeFill
         
-        scene.scaleMode = .resizeFill
-        skView.presentScene(scene)
+        skView.presentScene(startScene)
     }
 }
