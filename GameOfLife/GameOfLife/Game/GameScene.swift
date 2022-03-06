@@ -17,7 +17,8 @@ class GameScene: SKScene {
     private var automaTexture: SKTexture?
     
     var tileGrid: SKTileMapNode!
-    
+    let aliveLabel = SKLabelNode(text: "0")
+    let generationLabel = SKLabelNode(text: "0")
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -35,8 +36,16 @@ class GameScene: SKScene {
                        cols: game.cols,
                        cellSize: cellSize)
         
-        addCell(at: tileGrid.centerOfTile(atColumn: 0, row: 1))
+        timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(allMenMustDie), userInfo: nil, repeats: true)
     }
+    
+    override func update(_ currentTime: TimeInterval) {
+        updateLife()
+        
+        aliveLabel.text = "Alive: \(game.alive)"
+        generationLabel.text = "Generation: \(game.generation)"
+    }
+    
     
     private func initializeGrid(rows: Int, cols: Int, cellSize: CGSize) -> SKTileMapNode {
         let tileTexture = cellTexture(with: cellSize)
@@ -54,19 +63,48 @@ class GameScene: SKScene {
         addChild(tileGrid)
         return tileGrid
     }
+
+    @objc private func allMenMustDie() {
+        game.nextGeneration()
+    }
     
-    private func addCell(at position: CGPoint) {
+    private func updateLife() {
+        tileGrid.removeAllChildren()
+        
+        for i in 0..<tileGrid.numberOfColumns {
+            for j in 0..<tileGrid.numberOfRows {
+                if game.automas[j][i].status == .alive {
+                    addCellAt(row: j, col: i)
+                } else {
+                    
+                }
+            }
+        }
+
+    }
+    
+    private func addCellAt(row: Int, col: Int) {
         let cell = SKSpriteNode(texture: automaTexture)
-        cell.position = position
+        cell.position = tileGrid.centerOfTile(atColumn: col, row: row)
+        cell.name = "\(row)-\(col)"
         tileGrid.addChild(cell)
     }
     
+    private func cellToRemoveAt(row: Int, col: Int, cells: inout [SKNode]) {
+        let name = "\(row)-\(col)"
+        guard let child = tileGrid.childNode(withName: name) else { return }
+        cells.append(child)
+    }
 }
 
 
 extension GameScene {
     private func configureScene() {
         backgroundColor = SKColor.black
+        
+        aliveLabel.position = CGPoint(x: frame.minX + 50, y: frame.minY + 50)
+        generationLabel.position = CGPoint(x: frame.minX + 100, y: frame.minY + 50)
+        
     }
     
     
