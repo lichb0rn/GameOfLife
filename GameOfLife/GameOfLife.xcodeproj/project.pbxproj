@@ -14,7 +14,8 @@
 		8912778A27D22C320016D4DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8912778827D22C320016D4DB /* LaunchScreen.storyboard */; };
 		8912779327D23CF50016D4DB /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912779227D23CF50016D4DB /* GameViewController.swift */; };
 		8912779627D23D1A0016D4DB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912779527D23D1A0016D4DB /* GameScene.swift */; };
-		8912779827D25C4C0016D4DB /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912779727D25C4C0016D4DB /* Grid.swift */; };
+		895545F927D488C400A5549A /* Automa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895545F827D488C400A5549A /* Automa.swift */; };
+		895545FE27D4A5C900A5549A /* UImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895545FD27D4A5C900A5549A /* UImage+Extension.swift */; };
 		895FF4AE27D33A2700D14B1F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FF4AD27D33A2700D14B1F /* GameModel.swift */; };
 		899DD5AD27D388C6001397B1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899DD5AC27D388C6001397B1 /* StartScene.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +31,8 @@
 		8912779127D23CA90016D4DB /* GameOfLife.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameOfLife.entitlements; sourceTree = "<group>"; };
 		8912779227D23CF50016D4DB /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8912779527D23D1A0016D4DB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		8912779727D25C4C0016D4DB /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		895545F827D488C400A5549A /* Automa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Automa.swift; sourceTree = "<group>"; };
+		895545FD27D4A5C900A5549A /* UImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UImage+Extension.swift"; sourceTree = "<group>"; };
 		895FF4AD27D33A2700D14B1F /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		899DD5AC27D388C6001397B1 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,8 +69,9 @@
 			children = (
 				8912777D27D22C300016D4DB /* AppDelegate.swift */,
 				8912778627D22C320016D4DB /* Assets.xcassets */,
-				8912779127D23CA90016D4DB /* GameOfLife.entitlements */,
+				895545FA27D49BE300A5549A /* Extensions */,
 				8912779427D23D0B0016D4DB /* Game */,
+				8912779127D23CA90016D4DB /* GameOfLife.entitlements */,
 				8912778B27D22C320016D4DB /* Info.plist */,
 				8912778827D22C320016D4DB /* LaunchScreen.storyboard */,
 				8912778327D22C300016D4DB /* Main.storyboard */,
@@ -83,10 +86,18 @@
 				895FF4AD27D33A2700D14B1F /* GameModel.swift */,
 				8912779527D23D1A0016D4DB /* GameScene.swift */,
 				8912779227D23CF50016D4DB /* GameViewController.swift */,
-				8912779727D25C4C0016D4DB /* Grid.swift */,
 				899DD5AC27D388C6001397B1 /* StartScene.swift */,
+				895545F827D488C400A5549A /* Automa.swift */,
 			);
 			path = Game;
+			sourceTree = "<group>";
+		};
+		895545FA27D49BE300A5549A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				895545FD27D4A5C900A5549A /* UImage+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,8 +175,9 @@
 				8912779327D23CF50016D4DB /* GameViewController.swift in Sources */,
 				8912779627D23D1A0016D4DB /* GameScene.swift in Sources */,
 				899DD5AD27D388C6001397B1 /* StartScene.swift in Sources */,
-				8912779827D25C4C0016D4DB /* Grid.swift in Sources */,
 				8912778027D22C300016D4DB /* SceneDelegate.swift in Sources */,
+				895545FE27D4A5C900A5549A /* UImage+Extension.swift in Sources */,
+				895545F927D488C400A5549A /* Automa.swift in Sources */,
 				895FF4AE27D33A2700D14B1F /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

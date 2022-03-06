@@ -67,14 +67,24 @@ class StartScene: SKScene {
     
     private func startGame() {
         let scene = GameScene(size: self.size)
-        scene.rows = game.rows
-        scene.cols = game.cols
+        scene.game = makeNewGame()
         
         let transition = SKTransition.doorsOpenHorizontal(withDuration: 1.5)
         self.view?.presentScene(scene, transition: transition)
         
         colsTextField.removeFromSuperview()
         rowsTextField.removeFromSuperview()
+    }
+    
+    private func makeNewGame() -> GameModel {
+        let rowString = rowsTextField.text ?? "10"
+        let colString = colsTextField.text ?? "10"
+        
+        let rows = Int(rowString) ?? 10
+        let cols = Int(colString) ?? 10
+        
+        let newGame = GameModel(rows: rows, cols: cols)
+        return newGame
     }
     
     private func makeTextField(at position: CGPoint, placeholder: String = "Your ad could be here :-)") -> UITextField {
@@ -96,8 +106,6 @@ class StartScene: SKScene {
         return textField
     }
     
-    
-
 }
 
 
