@@ -18,6 +18,7 @@
 		895545FE27D4A5C900A5549A /* UImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895545FD27D4A5C900A5549A /* UImage+Extension.swift */; };
 		895FF4AE27D33A2700D14B1F /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895FF4AD27D33A2700D14B1F /* GameModel.swift */; };
 		899DD5AD27D388C6001397B1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899DD5AC27D388C6001397B1 /* StartScene.swift */; };
+		89B02B8A27D5B60F006DE779 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B02B8927D5B60F006DE779 /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		895545FD27D4A5C900A5549A /* UImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UImage+Extension.swift"; sourceTree = "<group>"; };
 		895FF4AD27D33A2700D14B1F /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		899DD5AC27D388C6001397B1 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		89B02B8927D5B60F006DE779 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				8912779227D23CF50016D4DB /* GameViewController.swift */,
 				899DD5AC27D388C6001397B1 /* StartScene.swift */,
 				895545F827D488C400A5549A /* Automa.swift */,
+				89B02B8927D5B60F006DE779 /* GameOver.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				8912777E27D22C300016D4DB /* AppDelegate.swift in Sources */,
 				8912779327D23CF50016D4DB /* GameViewController.swift in Sources */,
 				8912779627D23D1A0016D4DB /* GameScene.swift in Sources */,
+				89B02B8A27D5B60F006DE779 /* GameOver.swift in Sources */,
 				899DD5AD27D388C6001397B1 /* StartScene.swift in Sources */,
 				8912778027D22C300016D4DB /* SceneDelegate.swift in Sources */,
 				895545FE27D4A5C900A5549A /* UImage+Extension.swift in Sources */,

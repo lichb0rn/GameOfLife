@@ -19,6 +19,8 @@ class GameScene: SKScene {
     var tileGrid: SKTileMapNode!
     let aliveLabel = SKLabelNode(text: "0")
     let generationLabel = SKLabelNode(text: "0")
+    
+    private var stopper: Int = 20
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -42,8 +44,20 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         updateLife()
         
+        if game.alive == 0 {
+            gameOver()
+        }
+        
+        // For debug purposes
+        if stopper <= 0 {
+            gameOver()
+        }
+        
+        
         aliveLabel.text = "Alive: \(game.alive)"
         generationLabel.text = "Generation: \(game.generation)"
+        
+        
     }
     
     
@@ -65,22 +79,26 @@ class GameScene: SKScene {
     }
 
     @objc private func allMenMustDie() {
+        stopper -= 1
         game.nextGeneration()
     }
     
     private func updateLife() {
         tileGrid.removeAllChildren()
-        
+        var cellsToRemove: [SKNode] = []
         for i in 0..<tileGrid.numberOfColumns {
             for j in 0..<tileGrid.numberOfRows {
+                let name = "\(i)-\(j)"
                 if game.automas[j][i].status == .alive {
+//                    guard let _ = tileGrid.childNode(withName: name) else { continue }
                     addCellAt(row: j, col: i)
                 } else {
-                    
+                    guard let cell = tileGrid.childNode(withName: name) else { continue }
+                    cellsToRemove.append(cell)
                 }
             }
         }
-
+//        tileGrid.removeChildren(in: cellsToRemove)
     }
     
     private func addCellAt(row: Int, col: Int) {
@@ -95,6 +113,14 @@ class GameScene: SKScene {
         guard let child = tileGrid.childNode(withName: name) else { return }
         cells.append(child)
     }
+    
+    private func gameOver() {
+        timer.invalidate()
+        let gameOverScene = GameOver(size: self.size)
+        gameOverScene.game = game
+        let transition = SKTransition.fade(withDuration: 2)
+        self.view?.presentScene(gameOverScene, transition: transition)
+    }
 }
 
 
@@ -102,9 +128,13 @@ extension GameScene {
     private func configureScene() {
         backgroundColor = SKColor.black
         
-        aliveLabel.position = CGPoint(x: frame.minX + 50, y: frame.minY + 50)
-        generationLabel.position = CGPoint(x: frame.minX + 100, y: frame.minY + 50)
+        aliveLabel.position = CGPoint(x: frame.midX - 100, y: frame.maxY - 50)
+        aliveLabel.fontName = "Arial"
+        generationLabel.position = CGPoint(x: frame.midX + 100, y: frame.maxY - 50)
+        generationLabel.fontName = "Arial"
         
+        addChild(aliveLabel)
+        addChild(generationLabel)
     }
     
     

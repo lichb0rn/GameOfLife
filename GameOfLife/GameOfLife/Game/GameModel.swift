@@ -17,8 +17,11 @@ struct GameModel {
     let rows: Int
     let cols: Int
     
-    var generation: Int = 0
-    var alive: Int = 0
+    private(set) var minCount: Int = 0
+    private(set) var maxCount: Int = 0
+    
+    private(set) var generation: Int = 0
+    private(set) var alive: Int = 0
     
     // initial set up
     lazy var automas: [[Automa]] = Array(repeating: Array(repeating: Automa(status: .dead), count: rows),
@@ -44,14 +47,14 @@ struct GameModel {
                 }
             }
         }
-        
-        print("ALIVE: \(alive)")
+        minCount = alive
+        maxCount = alive
     }
     
     
     mutating func nextGeneration() {
         var lastGen = automas
-        
+        alive = 0
         for i in 0..<rows {
             for j in 0..<cols {
                 
@@ -59,14 +62,17 @@ struct GameModel {
                 
                 if (lastGen[i][j].status == .alive) && (liveRange.contains(neighborsCount)) {
                     automas[i][j].status = .alive
+                    alive += 1
                 } else if (lastGen[i][j].status == .dead) && (liveRange.contains(neighborsCount)) {
                     automas[i][j].status = .alive
+                    alive += 1
                 } else {
                     automas[i][j].status = .dead
                 }
             }
         }
         
+        countStats()
         generation += 1
     }
     
@@ -94,5 +100,13 @@ struct GameModel {
         }
         
         return neighbors
+    }
+    
+    private mutating func countStats() {
+        if (alive > 0) && (alive < minCount) {
+            minCount = alive
+        } else if alive > maxCount {
+            maxCount = alive
+        }
     }
 }
