@@ -20,8 +20,7 @@ class GameScene: SKScene {
     let aliveLabel = SKLabelNode(text: "0")
     let generationLabel = SKLabelNode(text: "0")
     
-    private var stopper: Int = 20
-
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         
@@ -30,8 +29,8 @@ class GameScene: SKScene {
         let minDimension = min(size.height, size.width)
         let cellWidth = minDimension / CGFloat(game.cols) - padding
         let cellSize = CGSize(width: cellWidth, height: cellWidth)
-        
-        let automaImage = UIImage(named: "cell")?.resize(with: cellSize)
+
+        let automaImage = UIImage(named: "cell")?.resize(with: CGSize(width: cellWidth - 2, height: cellWidth - 2))
         automaTexture = SKTexture(image: automaImage!)
         
         tileGrid = initializeGrid(rows: game.rows,
@@ -40,26 +39,6 @@ class GameScene: SKScene {
         
         timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(allMenMustDie), userInfo: nil, repeats: true)
     }
-    
-    override func update(_ currentTime: TimeInterval) {
-        updateLife()
-        
-        if game.alive == 0 {
-            gameOver()
-        }
-        
-        // For debug purposes
-        if stopper <= 0 {
-            gameOver()
-        }
-        
-        
-        aliveLabel.text = "Alive: \(game.alive)"
-        generationLabel.text = "Generation: \(game.generation)"
-        
-        
-    }
-    
     
     private func initializeGrid(rows: Int, cols: Int, cellSize: CGSize) -> SKTileMapNode {
         let tileTexture = cellTexture(with: cellSize)
@@ -78,9 +57,25 @@ class GameScene: SKScene {
         return tileGrid
     }
 
+    private var stopper: Int = 20
     @objc private func allMenMustDie() {
-        stopper -= 1
+        // For debug purposes
+        if stopper <= 0 {
+            gameOver()
+        }
+        
+        updateLife()
+        
+        
         game.nextGeneration()
+        stopper -= 1
+        
+        if game.alive == 0 {
+            gameOver()
+        }
+    
+        aliveLabel.text = "Alive: \(game.alive)"
+        generationLabel.text = "Generation: \(game.generation)"
     }
     
     private func updateLife() {
@@ -105,6 +100,7 @@ class GameScene: SKScene {
         let cell = SKSpriteNode(texture: automaTexture)
         cell.position = tileGrid.centerOfTile(atColumn: col, row: row)
         cell.name = "\(row)-\(col)"
+        cell.blendMode = .replace
         tileGrid.addChild(cell)
     }
     
