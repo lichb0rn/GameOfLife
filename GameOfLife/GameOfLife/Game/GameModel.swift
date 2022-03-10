@@ -24,8 +24,8 @@ struct GameModel {
     private(set) var alive: Int = 0
     
     // initial set up
-    lazy var automas: [[Automa]] = Array(repeating: Array(repeating: Automa(status: .dead), count: rows),
-                                         count: cols)
+    lazy var automas: [[Automa]] = Array(repeating: Array(repeating: Automa(status: .dead), count: cols),
+                                         count: rows)
     
     init(rows: Int, cols: Int) {
         // Fundamental restriction

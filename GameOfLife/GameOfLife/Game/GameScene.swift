@@ -85,7 +85,6 @@ class GameScene: SKScene {
             for j in 0..<tileGrid.numberOfRows {
                 let name = "\(i)-\(j)"
                 if game.automas[j][i].status == .alive {
-//                    guard let _ = tileGrid.childNode(withName: name) else { continue }
                     addCellAt(row: j, col: i)
                 } else {
                     guard let cell = tileGrid.childNode(withName: name) else { continue }
@@ -93,7 +92,6 @@ class GameScene: SKScene {
                 }
             }
         }
-//        tileGrid.removeChildren(in: cellsToRemove)
     }
     
     private func addCellAt(row: Int, col: Int) {

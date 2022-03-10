@@ -77,24 +77,24 @@ class StartScene: SKScene {
     }
     
     private func makeNewGame() -> GameModel {
-        let rowString = rowsTextField.text ?? "10"
-        let colString = colsTextField.text ?? "10"
+        let rowsString = rowsTextField.text?.isEmpty ?? true ? "10" : rowsTextField.text!
+        let colsString = colsTextField.text?.isEmpty ?? true ? "10" : colsTextField.text!
         
-        let rows = Int(rowString) ?? 10
-        let cols = Int(colString) ?? 10
+        let rows = Int(rowsString) ?? 10
+        let cols = Int(colsString) ?? 10
         
         let newGame = GameModel(rows: rows, cols: cols)
         return newGame
     }
     
-    private func makeTextField(at position: CGPoint, placeholder: String = "Your ad could be here :-)") -> UITextField {
+    private func makeTextField(at position: CGPoint, placeholder: String = "10") -> UITextField {
         let textField = UITextField(frame: CGRect(origin: position,
                                                   size: CGSize(width: 100, height: 30)))
         
         
         textField.layer.borderColor = UIColor.white.cgColor
         textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = 5
+        textField.layer.cornerRadius = 4
         textField.textColor = .white
         textField.textAlignment = .right
         textField.backgroundColor = .black
